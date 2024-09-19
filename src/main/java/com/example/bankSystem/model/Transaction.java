@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
@@ -35,9 +37,8 @@ public class Transaction {
     @Column(name = "type", nullable = false)
     private TransactionType type;
 
-    @Column(name = "transaction_date", nullable = false)
-    private LocalDateTime transactionDate;
-
     @OneToOne(optional = true)
+    @JoinColumn(referencedColumnName = "transfer_details_id")
+    @Cascade(value = CascadeType.ALL)
     private TransferDetails transferDetails;
 }

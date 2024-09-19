@@ -1,6 +1,7 @@
 package com.example.bankSystem.dto;
 
 import com.example.bankSystem.model.Client;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,8 @@ import java.io.Serializable;
  */
 @Data
 public class ClientDto implements Serializable {
+    @NotBlank
     private final String firstName;
+    @NotBlank
     private final String lastName;
 }

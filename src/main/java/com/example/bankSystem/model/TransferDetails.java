@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import java.util.UUID;
 
@@ -15,13 +17,11 @@ public class TransferDetails {
 
     @Id
     @Column(name = "transfer_details_id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID transferDetailsId;
 
     @OneToOne
     @JoinColumn(referencedColumnName = "account_id")
     private Account receiver;
 
-    @OneToOne
-    @JoinColumn(referencedColumnName = "transaction_id")
-    private Transaction transaction;
 }

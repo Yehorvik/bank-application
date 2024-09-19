@@ -1,6 +1,7 @@
 package com.example.bankSystem.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class Account {
     private UUID accountId;
 
     @Column(nullable = false)
+    @Positive
     private BigDecimal balance;
 
     @ManyToOne
@@ -27,10 +29,10 @@ public class Account {
     private Client client;
 
     public BigDecimal withdrawFunds(BigDecimal amount){
-        return balance.subtract(amount);
+        return balance = balance.subtract(amount);
     }
 
     public BigDecimal depositFunds(BigDecimal amount){
-        return balance.add(amount);
+        return balance = balance.add(amount);
     }
 }
